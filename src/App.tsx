@@ -9,14 +9,17 @@ const MIN_LEN = 8
 const MAX_LEN = 48
 const DEFAULT_LEN = 16
 
-const inputClassName =
-  'w-full rounded-[10px] border border-transparent bg-surface px-3 py-3 text-[1.0625rem] leading-snug text-text outline-none transition-[border-color,box-shadow] placeholder:text-muted placeholder:opacity-70 focus-visible:border-accent max-lg:min-h-12 lg:rounded-xl lg:px-4 lg:py-3.5 lg:text-lg'
+const fieldShellClassName =
+  'flex h-[62px] shrink-0 items-center rounded-[16px] border border-transparent bg-surface px-3 transition-[border-color,box-shadow] focus-within:border-accent focus-within:ring-[3px] focus-within:ring-accent/45 lg:px-4'
+
+const fieldInputClassName =
+  'min-w-0 flex-1 bg-transparent text-[1.0625rem] leading-snug text-text outline-none placeholder:text-muted placeholder:opacity-70 lg:text-lg'
 
 const btnPrimaryClassName =
   'w-full rounded-[10px] border-0 bg-accent py-3 px-4 text-[1rem] font-semibold text-white outline-none transition-all hover:bg-accent-hover active:scale-[0.98] focus-visible:ring-[3px] focus-visible:ring-accent/45 disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100 max-lg:min-h-12 lg:mt-6 lg:rounded-xl lg:py-[0.85rem] lg:px-5 lg:text-[1.0625rem]'
 
 const btnIconClassName =
-  'box-border flex shrink-0 items-center justify-center self-stretch rounded-[10px] outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-accent/45 lg:rounded-xl'
+  'box-border flex shrink-0 items-center justify-center self-stretch rounded-[16px] outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-accent/45'
 
 const btnIconGhostClassName = `${btnIconClassName} w-12 min-w-12 max-w-12 border border-transparent bg-surface text-muted hover:bg-[#333] hover:text-text lg:w-14 lg:min-w-14 lg:max-w-14`
 
@@ -26,7 +29,7 @@ const labelClassName =
   'px-1.5 text-[0.9375rem] font-medium text-muted lg:text-sm'
 
 const inputErrorClassName =
-  'border-danger focus-visible:border-accent focus-visible:ring-[3px] focus-visible:ring-accent/45'
+  'border-danger focus-within:border-accent focus-within:ring-[3px] focus-within:ring-accent/45'
 
 const fieldErrorTextClassName =
   'px-1.5 text-[0.875rem] text-danger lg:text-[0.9375rem]'
@@ -84,30 +87,34 @@ function App() {
 
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col lg:min-h-0 lg:max-w-[40rem]">
-      <div className="flex flex-1 flex-col gap-6 rounded-[14px] pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:gap-6 sm:px-[1.35rem] sm:py-5 sm:rounded-[18px] lg:flex-none lg:gap-5 lg:rounded-[22px] lg:px-7 lg:py-6 lg:pb-0">
+      <div className="flex flex-1 flex-col gap-6 rounded-[20px] pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:gap-6 sm:px-[1.35rem] sm:py-5 sm:rounded-[24px] lg:flex-none lg:gap-5 lg:rounded-[28px] lg:px-7 lg:py-6 lg:pb-0">
         <div className="flex flex-col gap-2">
           <label className={labelClassName} htmlFor="service">
             Название сервиса
           </label>
-          <input
-            id="service"
-            className={`${inputClassName} ${fieldErrors.service ? inputErrorClassName : ''}`}
-            type="text"
-            autoComplete="off"
-            autoCorrect="off"
-            spellCheck={false}
-            placeholder="Введите название..."
-            value={service}
-            aria-invalid={fieldErrors.service ? true : undefined}
-            aria-describedby={fieldErrors.service ? 'service-error' : undefined}
-            onChange={(e) => {
-              setService(e.target.value)
-              setFieldErrors((f) => ({ ...f, service: undefined }))
-            }}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') void generate()
-            }}
-          />
+          <div
+            className={`${fieldShellClassName} ${fieldErrors.service ? inputErrorClassName : ''}`}
+          >
+            <input
+              id="service"
+              className={fieldInputClassName}
+              type="text"
+              autoComplete="off"
+              autoCorrect="off"
+              spellCheck={false}
+              placeholder="Введите название..."
+              value={service}
+              aria-invalid={fieldErrors.service ? true : undefined}
+              aria-describedby={fieldErrors.service ? 'service-error' : undefined}
+              onChange={(e) => {
+                setService(e.target.value)
+                setFieldErrors((f) => ({ ...f, service: undefined }))
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') void generate()
+              }}
+            />
+          </div>
           {fieldErrors.service ? (
             <p id="service-error" className={fieldErrorTextClassName} role="alert">
               {fieldErrors.service}
@@ -119,23 +126,27 @@ function App() {
           <label className={labelClassName} htmlFor="secret">
             Секретная фраза
           </label>
-          <div className="flex items-stretch gap-2">
-            <input
-              id="secret"
-              className={`${inputClassName} min-w-0 flex-1 ${fieldErrors.secret ? inputErrorClassName : ''}`}
-              type={showSecret ? 'text' : 'password'}
-              autoComplete="off"
-              autoCorrect="off"
-              spellCheck={false}
-              placeholder="Введите фразу..."
-              value={secret}
-              aria-invalid={fieldErrors.secret ? true : undefined}
-              aria-describedby={fieldErrors.secret ? 'secret-error' : undefined}
-              onChange={(e) => {
-                setSecret(e.target.value)
-                setFieldErrors((f) => ({ ...f, secret: undefined }))
-              }}
-            />
+          <div className="flex h-[62px] items-stretch gap-2">
+            <div
+              className={`${fieldShellClassName} min-h-0 min-w-0 flex-1 ${fieldErrors.secret ? inputErrorClassName : ''}`}
+            >
+              <input
+                id="secret"
+                className={fieldInputClassName}
+                type={showSecret ? 'text' : 'password'}
+                autoComplete="off"
+                autoCorrect="off"
+                spellCheck={false}
+                placeholder="Введите фразу..."
+                value={secret}
+                aria-invalid={fieldErrors.secret ? true : undefined}
+                aria-describedby={fieldErrors.secret ? 'secret-error' : undefined}
+                onChange={(e) => {
+                  setSecret(e.target.value)
+                  setFieldErrors((f) => ({ ...f, secret: undefined }))
+                }}
+              />
+            </div>
             <button
               type="button"
               className={btnIconGhostClassName}
@@ -173,7 +184,7 @@ function App() {
           <label className={`${labelClassName} shrink-0`} htmlFor="length">
             Длина пароля
           </label>
-          <div className="flex min-w-0 flex-1 items-center gap-3 rounded-[14px] bg-surface p-4 max-lg:p-[1.125rem]">
+          <div className="flex h-[62px] w-full min-h-[62px] shrink-0 items-center gap-3 rounded-[20px] bg-surface px-4 box-border">
             <input
               id="length"
               className="h-2 min-w-0 flex-1 cursor-pointer accent-accent rounded-full max-lg:h-2.5 lg:h-2"
@@ -194,9 +205,9 @@ function App() {
 
         <div className="flex flex-col gap-2">
           <span className={labelClassName}>Пароль</span>
-          <div className="flex flex-row items-stretch gap-2">
+          <div className="flex h-[62px] flex-row items-stretch gap-2">
             <output
-              className={`flex min-h-12 flex-1 items-center break-all rounded-[10px] border border-transparent bg-surface px-3 py-3 font-mono text-[1rem] leading-snug lg:min-h-[3.25rem] lg:rounded-xl lg:px-4 lg:py-3.5 lg:text-[1.0625rem] ${password ? 'text-text' : 'text-muted'}`}
+              className={`flex min-h-0 min-w-0 flex-1 items-center break-all rounded-[16px] border border-transparent bg-surface px-3 font-mono text-[1rem] leading-snug lg:px-4 lg:text-[1.0625rem] ${password ? 'text-text' : 'text-muted'}`}
               htmlFor="secret service length"
               aria-live="polite"
             >
