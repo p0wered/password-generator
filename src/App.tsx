@@ -16,7 +16,7 @@ const fieldInputClassName =
   'min-w-0 flex-1 bg-transparent text-[1.0625rem] leading-snug text-text outline-none placeholder:text-muted placeholder:opacity-70 lg:text-lg'
 
 const btnPrimaryClassName =
-  'w-full rounded-[10px] border-0 bg-accent py-3 px-4 text-[1rem] font-semibold text-white outline-none transition-all hover:bg-accent-hover active:scale-[0.98] focus-visible:ring-[3px] focus-visible:ring-accent/45 disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100 max-lg:min-h-12 lg:mt-6 lg:rounded-xl lg:py-[0.85rem] lg:px-5 lg:text-[1.0625rem]'
+  'w-full rounded-[16px] border-0 bg-accent py-3 px-4 text-[1rem] font-semibold text-white outline-none transition-all hover:bg-accent-hover active:scale-[0.98] focus-visible:ring-[3px] focus-visible:ring-accent/45 disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100 max-lg:min-h-12 lg:mt-6 lg:rounded-xl lg:py-[0.85rem] lg:px-5 lg:text-[1.0625rem]'
 
 const btnIconClassName =
   'box-border flex shrink-0 items-center justify-center self-stretch rounded-[16px] outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-accent/45'
