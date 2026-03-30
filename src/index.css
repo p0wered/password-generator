@@ -27,11 +27,11 @@
   }
 
   body {
-    @apply min-h-dvh overflow-x-hidden;
+    @apply min-h-dvh overflow-x-hidden max-lg:overflow-y-clip;
   }
 
   #root {
-    @apply min-h-dvh p-3 sm:px-6 sm:py-8 sm:pb-10 lg:px-9 lg:pt-11 lg:pb-14;
+    @apply flex min-h-dvh flex-col p-3 sm:px-6 sm:py-8 sm:pb-10 lg:px-9 lg:pt-11 lg:pb-14;
   }
 
   @media (min-width: 1024px) {

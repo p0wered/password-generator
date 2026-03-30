@@ -16,7 +16,7 @@ const fieldInputClassName =
   'min-w-0 flex-1 bg-transparent text-[1.0625rem] leading-snug text-text outline-none placeholder:text-muted placeholder:opacity-70 lg:text-lg'
 
 const btnPrimaryClassName =
-  'w-full rounded-[16px] border-0 bg-accent py-3 px-4 text-[1rem] font-semibold text-white outline-none transition-all hover:bg-accent-hover active:scale-[0.98] focus-visible:ring-[3px] focus-visible:ring-accent/45 disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100 max-lg:min-h-12 lg:mt-6 lg:rounded-xl lg:py-[0.85rem] lg:px-5 lg:text-[1.0625rem]'
+  'w-full rounded-[16px] border-0 bg-accent py-3.5 px-4 text-[1rem] font-semibold text-white outline-none transition-all hover:bg-accent-hover active:scale-[0.98] focus-visible:ring-[3px] focus-visible:ring-accent/45 disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100 max-lg:min-h-12 lg:mt-6 lg:rounded-xl lg:py-[0.85rem] lg:px-5 lg:text-[1.0625rem]'
 
 const btnIconClassName =
   'box-border flex shrink-0 items-center justify-center self-stretch rounded-[16px] outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-accent/45'
@@ -86,8 +86,8 @@ function App() {
   }, [password])
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col lg:min-h-0 lg:max-w-[40rem]">
-      <div className="flex flex-1 flex-col gap-6 rounded-[20px] pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:gap-6 sm:px-[1.35rem] sm:py-5 sm:rounded-[24px] lg:flex-none lg:gap-5 lg:rounded-[28px] lg:px-7 lg:py-6 lg:pb-0">
+    <div className="mx-auto flex min-h-0 w-full max-w-lg flex-1 flex-col lg:max-w-[40rem] lg:flex-none">
+      <div className="flex min-h-0 flex-1 flex-col gap-6 rounded-[20px] pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:gap-6 sm:px-[1.35rem] sm:py-5 sm:rounded-[24px] lg:flex-none lg:gap-5 lg:rounded-[28px] lg:px-7 lg:py-6 lg:pb-0">
         <div className="flex flex-col gap-2">
           <label className={labelClassName} htmlFor="service">
             Название сервиса
